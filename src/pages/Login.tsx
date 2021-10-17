@@ -10,6 +10,7 @@ import {
   FormControl,
   OutlinedInput,
   InputLabel,
+  Typography,
 } from "@mui/material";
 import {
   getAuth,
@@ -93,7 +94,9 @@ const Login = () => {
             color: "#000",
           }}
         >
-          <h2>Login</h2>
+          <Typography variant="h5" component="h5">
+            Login
+          </Typography>
           <TextField
             InputLabelProps={{ required: false }}
             required={true}
