@@ -1,23 +1,38 @@
 import TopBar from "../components/TopBar";
-import { Typography, IconButton, Box, Tooltip } from "@mui/material";
+import {
+  Typography,
+  IconButton,
+  Box,
+  Tooltip,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@mui/material";
 import { getAuth } from "firebase/auth";
 import { useEffect } from "react";
 import { Add } from "@mui/icons-material";
 import { useState } from "react";
 import CreateWorkspaceModal from "../components/CreateWorkspaceModal";
+import { Workspace } from "../types";
 
 const Workspaces = () => {
   const auth = getAuth();
   const user = auth.currentUser;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [workspaces, setWorkspaces] = useState([]);
 
   useEffect(() => {
+    console.log(user);
     fetch(`http://localhost:8000/${user?.uid}/workspaces`)
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        setWorkspaces(result);
       });
-  });
+  }, []);
 
   const handleSubmit = (e: any, title: string, description: string) => {
     e.preventDefault();
@@ -26,7 +41,7 @@ const Workspaces = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ title, description, userId: user?.uid }),
+      body: JSON.stringify({ title, description, userId: user?.email }),
     })
       .then((res) => res.json())
       .then((result) => {
@@ -59,6 +74,33 @@ const Workspaces = () => {
             <Add />
           </IconButton>
         </Tooltip>
+      </Box>
+      <Box sx={{ maxWidth: 750, margin: "0 auto" }}>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Title</TableCell>
+                <TableCell>Description</TableCell>
+                <TableCell>Created By</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {workspaces.map((workspace: Workspace) => (
+                <TableRow
+                  key={workspace.id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {workspace.title}
+                  </TableCell>
+                  <TableCell>{workspace.description}</TableCell>
+                  <TableCell>{workspace.created_by}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </Box>
       <CreateWorkspaceModal
         handleSubmit={handleSubmit}

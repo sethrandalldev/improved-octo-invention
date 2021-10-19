@@ -5,12 +5,16 @@ import Workspaces from "./pages/Workspaces";
 import Account from "./pages/Account";
 import SignUp from "./pages/SignUp";
 import ProtectedRoute from "./ProtectedRoute";
+import Project from "./pages/Project";
 
 function App() {
   return (
     <Router>
       <div>
         <Switch>
+          <Route path="/">
+            <Project />
+          </Route>
           <ProtectedRoute path="/workspaces">
             <Workspaces />
           </ProtectedRoute>
