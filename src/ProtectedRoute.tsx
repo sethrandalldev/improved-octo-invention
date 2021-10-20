@@ -3,6 +3,7 @@ import { Redirect, Route } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useState } from "react";
 import { CircularProgress } from "@mui/material";
+import TopBar from "./components/TopBar";
 
 interface ProtectedRouteProps {
   children: JSX.Element;
@@ -26,7 +27,10 @@ export default function ProtectedRoute({
       {...rest}
       render={({ location }) =>
         user ? (
-          children
+          <div>
+            <TopBar />
+            {children}
+          </div>
         ) : isAuthReady ? (
           <Redirect
             to={{

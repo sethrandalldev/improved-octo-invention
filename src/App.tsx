@@ -12,9 +12,9 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/">
+          <ProtectedRoute exact path="/">
             <Project />
-          </Route>
+          </ProtectedRoute>
           <ProtectedRoute path="/workspaces">
             <Workspaces />
           </ProtectedRoute>
