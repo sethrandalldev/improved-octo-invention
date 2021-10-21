@@ -7,6 +7,7 @@ import {
   Menu,
   MenuItem,
   Link,
+  Box,
 } from "@mui/material";
 import { AccountCircle } from "@mui/icons-material";
 import { getAuth, signOut } from "firebase/auth";
@@ -28,15 +29,17 @@ const TopBar = () => {
 
   return (
     <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <Link
-            href="/workspaces"
-            sx={{ textDecoration: "none", color: "#fff" }}
-          >
-            Project Tracker
-          </Link>
-        </Typography>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Link
+              href="/workspaces"
+              sx={{ textDecoration: "none", color: "#fff" }}
+            >
+              My Workspaces
+            </Link>
+          </Typography>
+        </Box>
         <div>
           <IconButton
             size="large"
