@@ -1,4 +1,3 @@
-import TopBar from "../components/TopBar";
 import {
   Typography,
   IconButton,
@@ -51,19 +50,15 @@ const Workspaces = () => {
   };
 
   return (
-    <div>
-      <TopBar />
-      {user?.displayName && (
-        <Typography variant="h4" component="div" sx={{ flexGrow: 1, m: 2 }}>
-          Welcome {user.displayName}!
-        </Typography>
-      )}
+    <Box sx={{ maxWidth: 750, margin: "0 auto" }}>
       <Box
         sx={{
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "center",
-          m: 2,
+          maxWidth: 750,
+          mt: 3,
+          mb: 3,
         }}
       >
         <Typography variant="h4" component="h4" sx={{ mr: 2 }}>
@@ -75,39 +70,37 @@ const Workspaces = () => {
           </IconButton>
         </Tooltip>
       </Box>
-      <Box sx={{ maxWidth: 750, margin: "0 auto" }}>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Title</TableCell>
-                <TableCell>Description</TableCell>
-                <TableCell>Created By</TableCell>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Title</TableCell>
+              <TableCell>Description</TableCell>
+              <TableCell>My Role</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {workspaces.map((workspace: Workspace) => (
+              <TableRow
+                key={workspace.id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {workspace.title}
+                </TableCell>
+                <TableCell>{workspace.description}</TableCell>
+                <TableCell>Member</TableCell>
               </TableRow>
-            </TableHead>
-            <TableBody>
-              {workspaces.map((workspace: Workspace) => (
-                <TableRow
-                  key={workspace.id}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {workspace.title}
-                  </TableCell>
-                  <TableCell>{workspace.description}</TableCell>
-                  <TableCell>{workspace.created_by}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Box>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <CreateWorkspaceModal
         handleSubmit={handleSubmit}
         handleClose={() => setIsModalOpen(false)}
         isOpen={isModalOpen}
       />
-    </div>
+    </Box>
   );
 };
 

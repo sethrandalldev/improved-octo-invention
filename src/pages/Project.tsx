@@ -15,7 +15,6 @@ const Project = () => {
     <Box sx={{ display: "flex" }}>
       <SideBar />
       <Box sx={{ m: 2, width: "calc(100vw - 315px)" }}>
-        <h2>Workspace Name</h2>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }}>
             <TableHead>

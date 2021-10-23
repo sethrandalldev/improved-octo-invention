@@ -1,7 +1,6 @@
 import { Box, TextField, Typography } from "@mui/material";
 import { getAuth } from "firebase/auth";
 import { useState } from "react";
-import TopBar from "../components/TopBar";
 
 const Account = () => {
   const [fullName, setFullName] = useState("");
@@ -10,7 +9,6 @@ const Account = () => {
 
   return (
     <div>
-      <TopBar />
       <Typography variant="h4" component="div" sx={{ flexGrow: 1, m: 2 }}>
         My Account
       </Typography>

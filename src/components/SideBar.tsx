@@ -11,8 +11,11 @@ import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import WorkspacesIcon from "@mui/icons-material/Workspaces";
+import { useHistory } from "react-router-dom";
 
 const SideBar = () => {
+  const history = useHistory();
+  console.log(history);
   return (
     <Box
       sx={{
@@ -31,35 +34,67 @@ const SideBar = () => {
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <List>
           <ListItem>
-            <ListItemButton>
+            <ListItemButton onClick={() => history.push("/dashboard")}>
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
-              <ListItemText>Dashboard</ListItemText>
+              <ListItemText
+                sx={
+                  history.location.pathname === "/dashboard"
+                    ? { color: "#1976d2" }
+                    : null
+                }
+              >
+                Dashboard
+              </ListItemText>
             </ListItemButton>
           </ListItem>
           <ListItem>
-            <ListItemButton>
+            <ListItemButton onClick={() => history.push("/account-management")}>
               <ListItemIcon>
                 <SupervisorAccountIcon />
               </ListItemIcon>
-              <ListItemText>Account Management</ListItemText>
+              <ListItemText
+                sx={
+                  history.location.pathname === "/account-management"
+                    ? { color: "#1976d2" }
+                    : null
+                }
+              >
+                Account Management
+              </ListItemText>
             </ListItemButton>
           </ListItem>
           <ListItem>
-            <ListItemButton>
+            <ListItemButton onClick={() => history.push("/projects")}>
               <ListItemIcon>
                 <WorkspacesIcon />
               </ListItemIcon>
-              <ListItemText>My Projects</ListItemText>
+              <ListItemText
+                sx={
+                  history.location.pathname === "/projects"
+                    ? { color: "#1976d2" }
+                    : null
+                }
+              >
+                My Projects
+              </ListItemText>
             </ListItemButton>
           </ListItem>
           <ListItem>
-            <ListItemButton>
+            <ListItemButton onClick={() => history.push("/tickets")}>
               <ListItemIcon>
                 <AssignmentTurnedInIcon />
               </ListItemIcon>
-              <ListItemText>My Tickets</ListItemText>
+              <ListItemText
+                sx={
+                  history.location.pathname === "/tickets"
+                    ? { color: "#1976d2" }
+                    : null
+                }
+              >
+                My Tickets
+              </ListItemText>
             </ListItemButton>
           </ListItem>
         </List>
