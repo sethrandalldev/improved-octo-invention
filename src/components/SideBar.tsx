@@ -41,7 +41,7 @@ const SideBar = () => {
               <ListItemText
                 sx={
                   history.location.pathname === "/projects"
-                    ? { color: "#1976d2" }
+                    ? { color: "secondary.main" }
                     : null
                 }
               >
@@ -57,7 +57,7 @@ const SideBar = () => {
               <ListItemText
                 sx={
                   history.location.pathname === "/account-management"
-                    ? { color: "#1976d2" }
+                    ? { color: "secondary.main" }
                     : null
                 }
               >
@@ -73,7 +73,7 @@ const SideBar = () => {
               <ListItemText
                 sx={
                   history.location.pathname === "/tickets"
-                    ? { color: "#1976d2" }
+                    ? { color: "secondary.main" }
                     : null
                 }
               >

@@ -6,8 +6,10 @@ import {
   TableRow,
   Paper,
   Box,
+  TableBody,
 } from "@mui/material";
 import SideBar from "../components/SideBar";
+import Ticket from "../components/Ticket";
 
 const Tickets = () => {
   return (
@@ -19,12 +21,17 @@ const Tickets = () => {
           <Table sx={{ minWidth: 650 }}>
             <TableHead>
               <TableRow>
-                <TableCell>Title</TableCell>
-                <TableCell>Assigned To</TableCell>
-                <TableCell>Status</TableCell>
-                <TableCell>Priority</TableCell>
+                <TableCell sx={{ fontSize: "1.1rem" }}>Title</TableCell>
+                <TableCell sx={{ fontSize: "1.1rem" }}>Assigned To</TableCell>
+                <TableCell sx={{ fontSize: "1.1rem" }}>Status</TableCell>
+                <TableCell sx={{ fontSize: "1.1rem" }}>Priority</TableCell>
               </TableRow>
             </TableHead>
+            <TableBody>
+              <Ticket color="#EF476F" priority="High" />
+              <Ticket color="#F4AC45" priority="Medium" />
+              <Ticket color="#06D6A0" priority="Low" />
+            </TableBody>
           </Table>
         </TableContainer>
       </Box>
