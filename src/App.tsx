@@ -6,8 +6,7 @@ import Account from "./pages/Account";
 import SignUp from "./pages/SignUp";
 import ProtectedRoute from "./ProtectedRoute";
 import Project from "./pages/Project";
-import Dashboard from "./pages/Dashboard";
-import AccountManagement from "./pages/AccountManagement";
+import WorkspaceManagement from "./pages/WorkspaceManagement";
 import Projects from "./pages/Projects";
 import Tickets from "./pages/Tickets";
 
@@ -31,11 +30,8 @@ function App() {
           <ProtectedRoute exact path="/account">
             <Account />
           </ProtectedRoute>
-          <ProtectedRoute exact path="/dashboard">
-            <Dashboard />
-          </ProtectedRoute>
           <ProtectedRoute exact path="/account-management">
-            <AccountManagement />
+            <WorkspaceManagement />
           </ProtectedRoute>
           <ProtectedRoute exact path="/projects">
             <Projects />

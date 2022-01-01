@@ -34,18 +34,18 @@ const SideBar = () => {
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <List>
           <ListItem>
-            <ListItemButton onClick={() => history.push("/dashboard")}>
+            <ListItemButton onClick={() => history.push("/projects")}>
               <ListItemIcon>
-                <DashboardIcon />
+                <WorkspacesIcon />
               </ListItemIcon>
               <ListItemText
                 sx={
-                  history.location.pathname === "/dashboard"
+                  history.location.pathname === "/projects"
                     ? { color: "#1976d2" }
                     : null
                 }
               >
-                Dashboard
+                My Projects
               </ListItemText>
             </ListItemButton>
           </ListItem>
@@ -62,22 +62,6 @@ const SideBar = () => {
                 }
               >
                 Account Management
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>
-          <ListItem>
-            <ListItemButton onClick={() => history.push("/projects")}>
-              <ListItemIcon>
-                <WorkspacesIcon />
-              </ListItemIcon>
-              <ListItemText
-                sx={
-                  history.location.pathname === "/projects"
-                    ? { color: "#1976d2" }
-                    : null
-                }
-              >
-                My Projects
               </ListItemText>
             </ListItemButton>
           </ListItem>
