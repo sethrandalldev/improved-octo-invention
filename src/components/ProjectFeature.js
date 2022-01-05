@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const LoginFeature = (props) => {
+const ProjectFeature = (props) => {
   return (
     <div>
       <div
@@ -13,4 +13,4 @@ const LoginFeature = (props) => {
   );
 };
 
-export default LoginFeature;
+export default ProjectFeature;

@@ -1,5 +1,6 @@
 import Button from "../components/Button";
 import Textfield from "../components/Textfield";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   return (
@@ -12,12 +13,12 @@ const LoginForm = () => {
       <Textfield placeholder="Email" type="email" />
       <Textfield placeholder="Password" type="password" />
       <Button title="Sign In" color="text-white" backgroundColor="bg-primary" />
-      <hr className="border-gray-200 mx-auto my-4" />
-      <Button
-        title="Sign In with Google"
-        color="text-white"
-        backgroundColor="bg-secondary"
-      />
+      <p className="text-sm">
+        Don't have an account?{" "}
+        <Link to="/register" className="text-secondary">
+          Sign Up
+        </Link>
+      </p>
     </div>
   );
 };

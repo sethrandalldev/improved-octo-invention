@@ -1,43 +1,53 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import AppBarMenuItem from "./AppBarMenuItem";
 
 const AppBar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const location = useLocation();
-  console.log(location);
+
+  useEffect(() => {
+    setShowMenu(false);
+  }, [location]);
 
   return (
-    <nav
-      className={`w-screen bg-primary flex p-4 items-center ${
-        location.pathname === "/" ? "justify-end" : "justify-between"
-      }`}
-    >
-      <Link
-        to="/"
-        className={`${
-          location.pathname === "/" && "hidden"
-        } text-white text-2xl font-bold`}
-      >
+    <nav className="flex w-screen bg-primary p-4 items-center justify-between">
+      <Link to="/" className="hidden lg:block text-white">
         My Workspaces
       </Link>
-      <div className="float-left overflow-hidden">
+      <div className="hidden lg:flex space-x-5 text-white">
+        <Link to="/profile">Profile</Link>
+        <Link to="/logout">Sign Out</Link>
+      </div>
+      <div className="lg:hidden">
         <FontAwesomeIcon
           onClick={() => setShowMenu(!showMenu)}
           icon={faUserCircle}
-          size="3x"
-          className="hover:cursor-pointer bg-white rounded-full text-primary"
+          className="cursor-pointer bg-primary text-white rounded-full text-4xl"
         />
-        <div
-          className={`${
-            showMenu ? "block" : "hidden"
-          } absolute bg-gray-100 right-2 w-40 shadow-lg mt-2 transition-all`}
-        >
-          <AppBarMenuItem title="My Profile" />
-          <AppBarMenuItem title="Sign Out" />
-        </div>
+        {showMenu && (
+          <div className="text-primary absolute flex top-14 flex-col items-center rounded-lg">
+            <Link
+              to="/"
+              className="p-2 bg-gray-200 hover:bg-gray-300 rounded-t-lg w-36"
+            >
+              My Workspaces
+            </Link>
+            <Link
+              to="/profile"
+              className="p-2 bg-gray-200 w-36 hover:bg-gray-300"
+            >
+              Profile
+            </Link>
+            <Link
+              to="/login"
+              className="p-2 bg-gray-200 hover:bg-gray-300 w-36 rounded-b-lg"
+            >
+              Sign Out
+            </Link>
+          </div>
+        )}
       </div>
     </nav>
   );

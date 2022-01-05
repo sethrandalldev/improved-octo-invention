@@ -4,6 +4,8 @@ import Dashboard from "./pages/Dashboard";
 import Workspaces from "./pages/Workspaces";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Profile from "./pages/Profile";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -19,6 +21,25 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          exact
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/workspace/:id"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route exact path="/register" element={<Register />} />
       </Routes>
     </Router>
   );

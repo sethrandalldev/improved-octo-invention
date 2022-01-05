@@ -15,7 +15,7 @@ const Workspaces = () => {
             onClick={() => setShowModal(true)}
             title="Create Workspace"
             color="text-white"
-            backgroundColor="bg-primary"
+            backgroundColor="bg-secondary"
           />
         </div>
       </div>
@@ -30,11 +30,11 @@ const Workspaces = () => {
               <Button
                 onClick={() => setShowModal(false)}
                 title="Cancel"
-                color="text-primary"
+                color="text-secondary"
               />
               <Button
                 title="Create"
-                backgroundColor="bg-primary"
+                backgroundColor="bg-secondary"
                 color="text-white"
               />
             </div>

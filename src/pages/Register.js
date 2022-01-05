@@ -4,9 +4,9 @@ import {
   faChartPie,
 } from "@fortawesome/free-solid-svg-icons";
 import ProjectFeature from "../components/ProjectFeature";
-import LoginForm from "../components/LoginForm";
+import RegisterForm from "../components/RegisterForm";
 
-const Login = () => {
+const Register = () => {
   return (
     <div className="flex">
       <section className="hidden lg:flex bg-primary h-screen w-3/5 flex-col justify-center items-center">
@@ -32,10 +32,10 @@ const Login = () => {
         </div>
       </section>
       <section className="lg:w-2/5 mx-auto h-screen flex flex-col justify-center p-10">
-        <LoginForm />
+        <RegisterForm />
       </section>
     </div>
   );
 };
 
-export default Login;
+export default Register;
