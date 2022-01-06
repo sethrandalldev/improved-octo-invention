@@ -7,7 +7,7 @@ import {
 
 const WorkspaceMenu = () => {
   return (
-    <section className="w-1/5 bg-gray-200 rounded-lg m-3 p-4 overflow-hidden shadow-lg">
+    <section className="hidden lg:block w-1/5 bg-gray-200 rounded-lg m-3 p-4 overflow-hidden shadow-lg h-fit">
       <h1 className="text-2xl text-primary">Workspace Title</h1>
       <h2 className="text-sm my-2">Workspace Description goes here</h2>
       <hr className="border-primary mx-auto my-4" />
