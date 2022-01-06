@@ -1,9 +1,14 @@
 import { faUser, faMinusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 const WorkspaceCard = (props) => {
+  const navigate = useNavigate();
   return (
-    <div className="rounded-lg shadow-md hover:shadow-lg hover:cursor-pointer flex flex-col mx-auto my-5">
+    <div
+      onClick={() => navigate("/workspaces/hello", { replace: true })}
+      className="rounded-lg shadow-md hover:shadow-lg hover:cursor-pointer flex flex-col mx-auto my-5"
+    >
       <div className="text-primary bg-gray-200 rounded-t-lg p-3 flex items-center justify-between">
         <div>
           <h3 className="text-2xl">{props.title}</h3>
