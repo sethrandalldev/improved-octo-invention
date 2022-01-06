@@ -6,6 +6,9 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
+import Projects from "./pages/Projects.js";
+import Tickets from "./pages/Tickets";
+import Ticket from "./pages/Ticket";
 
 function App() {
   return (
@@ -14,7 +17,7 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route
           exact
-          path="/"
+          path="/workspaces"
           element={
             <ProtectedRoute>
               <Workspaces />
@@ -31,11 +34,34 @@ function App() {
           }
         />
         <Route
-          exact
-          path="/workspace/:id"
+          path="/workspaces/:id"
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/workspaces/:id/projects"
+          element={
+            <ProtectedRoute>
+              <Projects />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/workspaces/:id/tickets"
+          element={
+            <ProtectedRoute>
+              <Tickets />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/tickets/:id"
+          element={
+            <ProtectedRoute>
+              <Ticket />
             </ProtectedRoute>
           }
         />
