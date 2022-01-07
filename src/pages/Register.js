@@ -10,7 +10,7 @@ const Register = () => {
   return (
     <div className="flex">
       <section className="hidden lg:flex bg-primary h-screen w-3/5 flex-col justify-center items-center">
-        <h1 className="text-white text-center text-6xl pb-10">
+        <h1 className="text-white text-center text-6xl pb-10 project-tracker">
           Project Tracker
         </h1>
         <div className="flex justify-evenly space-x-10 p-10">

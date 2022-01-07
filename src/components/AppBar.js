@@ -12,10 +12,15 @@ const AppBar = () => {
   }, [location]);
 
   return (
-    <nav className="flex w-screen bg-primary p-4 items-center justify-between">
-      <Link to="/workspaces" className="hidden lg:block text-white">
-        My Workspaces
-      </Link>
+    <nav className="flex w-screen bg-primary p-4 items-center justify-end flex-row-reverse lg:justify-between lg:flex-row">
+      <div className="flex items-center">
+        <h1 className="text-3xl project-tracker text-white px-5 lg:pr-5">
+          Project Tracker
+        </h1>
+        <Link to="/workspaces" className="hidden lg:block text-white">
+          My Workspaces
+        </Link>
+      </div>
       <div className="hidden lg:flex space-x-5 text-white">
         <Link to="/profile">Profile</Link>
         <Link to="/logout">Sign Out</Link>
