@@ -3,7 +3,7 @@ import {
   faTasks,
   faChartPie,
 } from "@fortawesome/free-solid-svg-icons";
-import ProjectFeature from "../components/ProjectFeature";
+import AppFeature from "../components/AppFeature";
 import RegisterForm from "../components/RegisterForm";
 
 const Register = () => {
@@ -14,17 +14,17 @@ const Register = () => {
           Project Tracker
         </h1>
         <div className="flex justify-evenly space-x-10 p-10">
-          <ProjectFeature
+          <AppFeature
             gradient="from-orange-600 to-orange-800"
             icon={faUsers}
             title="Collaborate"
           />
-          <ProjectFeature
+          <AppFeature
             gradient="from-purple-600 to-purple-800"
             icon={faTasks}
             title="Track Progress"
           />
-          <ProjectFeature
+          <AppFeature
             gradient="from-green-600 to-green-800"
             icon={faChartPie}
             title="Analyze Projects"
