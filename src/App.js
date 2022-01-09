@@ -3,7 +3,12 @@ import "./App.css";
 import Dashboard from "./pages/Dashboard";
 import Workspaces from "./pages/Workspaces";
 import ProtectedRoute from "./components/ProtectedRoute";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import Projects from "./pages/Projects.js";
@@ -66,6 +71,7 @@ function App() {
           }
         />
         <Route exact path="/register" element={<Register />} />
+        <Route path="/" element={<Navigate replace to="/login" />} />
       </Routes>
     </Router>
   );
