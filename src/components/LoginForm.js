@@ -1,11 +1,15 @@
 import Button from "../components/Button";
 import Textfield from "../components/Textfield";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { update } from "../slices/userSlice";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onSubmit = () => {
     fetch("http://localhost:4000/login", {
@@ -13,8 +17,14 @@ const LoginForm = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     })
-      .then((response) => response.json)
-      .then((data) => console.log(data));
+      .then((response) => response.json())
+      .then((user) => {
+        console.log(user);
+        if (user.id) {
+          dispatch(update(user));
+          navigate("/projects", { replace: true });
+        }
+      });
   };
   return (
     <div className="bg-white">

@@ -1,6 +1,6 @@
 # Getting Started with Project Tracker
 
-This is the frontend of a Project Tracker app similar to trello or jira. You can create workspaces and procects, track tickets, and analyze progress.
+This is the frontend of a Project Tracker app similar to trello or jira. You can create projects, track tickets, and analyze progress.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -1,7 +1,6 @@
 import Login from "./pages/Login";
 import "./App.css";
-import Dashboard from "./pages/Dashboard";
-import Workspaces from "./pages/Workspaces";
+import Project from "./pages/Project";
 import ProtectedRoute from "./components/ProtectedRoute";
 import {
   BrowserRouter as Router,
@@ -22,15 +21,6 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route
           exact
-          path="/workspaces"
-          element={
-            <ProtectedRoute>
-              <Workspaces />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          exact
           path="/profile"
           element={
             <ProtectedRoute>
@@ -39,15 +29,15 @@ function App() {
           }
         />
         <Route
-          path="/workspaces/:id"
+          path="/projects/:id"
           element={
             <ProtectedRoute>
-              <Dashboard />
+              <Project />
             </ProtectedRoute>
           }
         />
         <Route
-          path="/workspaces/:id/projects"
+          path="/projects"
           element={
             <ProtectedRoute>
               <Projects />
@@ -55,7 +45,7 @@ function App() {
           }
         />
         <Route
-          path="/workspaces/:id/tickets"
+          path="/projects/:id/tickets"
           element={
             <ProtectedRoute>
               <Tickets />

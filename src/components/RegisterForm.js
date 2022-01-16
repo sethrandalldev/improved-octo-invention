@@ -1,6 +1,6 @@
 import Button from "./Button";
 import Textfield from "./Textfield";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const RegisterForm = () => {
@@ -8,16 +8,20 @@ const RegisterForm = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const onSubmit = () => {
-    const name = `${firstName} ${lastName}`;
     fetch("http://localhost:4000/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ firstName, lastName, email, password }),
     })
-      .then((response) => response.json)
-      .then((data) => console.log(data));
+      .then((response) => response.json())
+      .then((user) => {
+        if (user.id) {
+          navigate("/projects", { replace: true });
+        }
+      });
   };
 
   return (

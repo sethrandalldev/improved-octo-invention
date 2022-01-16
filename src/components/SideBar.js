@@ -5,7 +5,6 @@ import {
   faCaretDown,
   faAlignJustify,
   faThLarge,
-  faTasks,
   faCaretUp,
   faFolder,
   faCog,
@@ -34,7 +33,7 @@ const SideBar = () => {
         </div>
         <div className="hover:bg-slate-300 hover:cursor-pointer flex items-center space-x-4 p-5 my-2">
           <FontAwesomeIcon icon={faHome} size="x" />
-          <h3>My Workspaces</h3>
+          <h3>My Projects</h3>
         </div>
         <div>
           <h3 className="font-bold px-2">Workspace Menu</h3>

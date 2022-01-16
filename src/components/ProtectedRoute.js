@@ -1,10 +1,17 @@
-import SideBar from "./SideBar";
+import { useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const ProtectedRoute = (props) => {
-  return (
+  const location = useLocation();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user.user);
+  console.log(location);
+  return user ? (
     <div className="flex h-screen">
       <div className="w-full bg-white">{props.children}</div>
     </div>
+  ) : (
+    navigate("/login", { replace: true })
   );
 };
 
