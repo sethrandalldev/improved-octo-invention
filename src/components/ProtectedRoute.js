@@ -5,7 +5,6 @@ const ProtectedRoute = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
-  console.log(location);
   return user ? (
     <div className="flex h-screen">
       <div className="w-full bg-white">{props.children}</div>

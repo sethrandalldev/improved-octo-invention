@@ -19,7 +19,6 @@ const LoginForm = () => {
     })
       .then((response) => response.json())
       .then((user) => {
-        console.log(user);
         if (user.id) {
           dispatch(update(user));
           navigate("/projects", { replace: true });

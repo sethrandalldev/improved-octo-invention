@@ -11,12 +11,9 @@ const ProjectCard = (props) => {
     >
       <div className="text-primary bg-gray-200 rounded-t-lg p-3 flex items-center justify-between">
         <div>
-          <h3 className="text-2xl">{props.title}</h3>
-          <h4>{props.description}</h4>
+          <h3 className="text-2xl">{props.project.name}</h3>
         </div>
         <div>
-          <span>{props.projectUserCount}</span>
-          <FontAwesomeIcon icon={faUser} className="mx-2 text-3xl" />
           <FontAwesomeIcon
             icon={faCog}
             className="hover:drop-shadow-2xl hover:opacity-75 text-3xl ml-5 rounded-full"
