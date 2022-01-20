@@ -36,7 +36,7 @@ const SideBar = () => {
           <h3>My Projects</h3>
         </div>
         <div>
-          <h3 className="font-bold px-2">Workspace Menu</h3>
+          <h3 className="font-bold px-2">Project Menu</h3>
           <div className="hover:bg-slate-300 hover:cursor-pointer flex items-center space-x-4 p-5">
             <FontAwesomeIcon icon={faThLarge} size="x" />
             <h3>Dashboard</h3>

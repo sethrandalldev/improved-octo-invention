@@ -68,3 +68,8 @@ code {
     transform: rotate(360deg);
   }
 }
+
+#modal-root {
+  position: relative;
+  z-index: 999;
+}

@@ -1,12 +1,14 @@
 import { useSelector } from "react-redux";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import ProfileIcon from "./ProfileIcon";
 
 const ProtectedRoute = (props) => {
-  const location = useLocation();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
+
   return user ? (
     <div className="flex h-screen">
+      <ProfileIcon />
       <div className="w-full bg-white">{props.children}</div>
     </div>
   ) : (
