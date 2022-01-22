@@ -15,3 +15,20 @@ export const getProjectUsersByProject = (projectId) => {
     .then((response) => response.json())
     .then((data) => data);
 };
+
+export const updateUser = (user) => {
+  fetch(`http://localhost:4000/users/${user.id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+    }),
+  })
+    .then((response) => response.json())
+    .then((user) => {
+      console.log(user);
+      return user;
+    });
+};

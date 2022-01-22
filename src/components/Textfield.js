@@ -6,6 +6,8 @@ const Textfield = (props) => {
       type={props.type}
       value={props.value}
       placeholder={props.placeholder}
+      required={props.required}
+      minLength={props.min || "0"}
     />
   );
 };

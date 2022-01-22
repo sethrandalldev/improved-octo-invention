@@ -1,6 +1,7 @@
 const Button = (props) => {
   return (
     <button
+      type={props.type || "button"}
       onClick={props.onClick}
       className={`rounded-md my-2 p-3 ${
         props.fitContent ? "w-fit" : "w-full"

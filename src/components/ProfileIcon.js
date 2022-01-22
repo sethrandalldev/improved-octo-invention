@@ -30,6 +30,7 @@ const ProfileIcon = (props) => {
           </Link>
           <p
             onClick={() => {
+              window.localStorage.removeItem("token");
               dispatch(update(null));
               navigate("/login", { replace: true });
             }}

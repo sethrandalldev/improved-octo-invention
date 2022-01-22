@@ -2,17 +2,13 @@ import Login from "./pages/Login";
 import "./App.css";
 import Project from "./pages/Project";
 import ProtectedRoute from "./components/ProtectedRoute";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import Projects from "./pages/Projects.js";
 import Tickets from "./pages/Tickets";
 import Ticket from "./pages/Ticket";
+import InitialRoute from "./pages/InitialRoute";
 
 function App() {
   return (
@@ -61,7 +57,7 @@ function App() {
           }
         />
         <Route exact path="/register" element={<Register />} />
-        <Route path="/" element={<Navigate replace to="/login" />} />
+        <Route path="/" element={<InitialRoute />} />
       </Routes>
     </Router>
   );

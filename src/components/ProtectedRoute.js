@@ -1,18 +1,17 @@
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import ProfileIcon from "./ProfileIcon";
 
 const ProtectedRoute = (props) => {
-  const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
-
-  return user ? (
+  const token = window.localStorage.getItem("token");
+  return user && token ? (
     <div className="flex h-screen">
       <ProfileIcon />
       <div className="w-full bg-white">{props.children}</div>
     </div>
   ) : (
-    navigate("/login", { replace: true })
+    <Navigate to="/login" replace={true} />
   );
 };
 
