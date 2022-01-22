@@ -6,46 +6,28 @@ import {
   faAlignJustify,
   faThLarge,
   faCaretUp,
-  faFolder,
   faCog,
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import SideBarItem from "./SideBarItem";
+import Logo from "./Logo";
 
 const SideBar = () => {
   const [showProjects, setShowProjects] = useState(false);
   return (
-    <section className="bg-slate-200 w-96 flex flex-col justify-between">
+    <section className="w-96 flex flex-col justify-between text-gray-500">
       <div className="flex flex-col">
-        <div className="flex space-x-4 items-center p-4">
-          <Link to="/profile">
-            <FontAwesomeIcon
-              icon={faUserCircle}
-              size="3x"
-              className="bg-primary border-primary text-slate-200 rounded-full border-2 shadow-xl"
-            />
-          </Link>
-          <div>
-            <h3 className="text-2xl pt-4 font-bold">Seth Randall</h3>
-            <h4 className="text-sm pb-4 font-bold">Software Engineer</h4>
-          </div>
-        </div>
-        <div className="hover:bg-slate-300 hover:cursor-pointer flex items-center space-x-4 p-5 my-2">
-          <FontAwesomeIcon icon={faHome} size="x" />
-          <h3>My Projects</h3>
+        <div className="p-4 flex items-center rounded-full">
+          <Logo />
         </div>
         <div>
-          <h3 className="font-bold px-2">Project Menu</h3>
-          <div className="hover:bg-slate-300 hover:cursor-pointer flex items-center space-x-4 p-5">
-            <FontAwesomeIcon icon={faThLarge} size="x" />
-            <h3>Dashboard</h3>
-          </div>
+          <h3 className="font-bold px-2 m-3">Menu</h3>
+          <SideBarItem icon={faThLarge} text="Dashboard" />
           <div
             onClick={() => setShowProjects(!showProjects)}
-            className={`${
-              showProjects && "bg-slate-300"
-            } hover:bg-slate-300 hover:cursor-pointer flex items-center space-x-4 p-5 justify-between`}
+            className="hover:cursor-pointer flex items-center space-x-4 p-3 rounded-lg justify-between hover:bg-secondary/30 m-3 hover:text-secondary"
           >
             <div className="flex space-x-4 items-center">
               <FontAwesomeIcon icon={faAlignJustify} size="x" />
@@ -53,34 +35,17 @@ const SideBar = () => {
             </div>
             <FontAwesomeIcon icon={showProjects ? faCaretUp : faCaretDown} />
           </div>
-          <div
-            className={`${showProjects ? "block" : "hidden"} bg-slate-300 py-4`}
-          >
-            <div className="border-l-primary border-l-2 ml-6">
-              <div className="cursor-pointer flex items-center space-x-4 py-3 px-4 hover:bg-slate-400">
-                <FontAwesomeIcon icon={faFolder} />
-                <h4>Project 1</h4>
-              </div>
-              <div className="cursor-pointer flex items-center space-x-4 py-3 px-4 hover:bg-slate-400">
-                <FontAwesomeIcon icon={faFolder} />
-                <h4>Project 2</h4>
-              </div>
-              <div className="cursor-pointer flex items-center space-x-4 py-3 px-4 hover:bg-slate-400">
-                <FontAwesomeIcon icon={faFolder} />
-                <h4>Project 3</h4>
-              </div>
+          <div className={`${showProjects ? "block" : "hidden"} pb-2`}>
+            <div className="border-l-gray-500 border-l-2 ml-6">
+              <SideBarItem text="Project 1" />
+              <SideBarItem text="Project 2" />
+              <SideBarItem text="Project 3" />
             </div>
           </div>
-          <div className="hover:bg-slate-300 hover:cursor-pointer flex items-center space-x-4 p-5">
-            <FontAwesomeIcon icon={faCog} size="x" />
-            <h3>Settings</h3>
-          </div>
+          <SideBarItem icon={faCog} text="Settings" />
         </div>
       </div>
-      <div className="hover:bg-slate-300 hover:cursor-pointer flex items-center space-x-4 p-5">
-        <FontAwesomeIcon icon={faSignOutAlt} size="x" />
-        <h3>Sign Out</h3>
-      </div>
+      <SideBarItem icon={faSignOutAlt} text="Sign Out" />
     </section>
   );
 };
