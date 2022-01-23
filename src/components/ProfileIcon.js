@@ -20,11 +20,11 @@ const ProfileIcon = (props) => {
         className="absolute right-10 top-5 text-primary rounded-full cursor-pointer"
       />
       {isOpen && (
-        <div className="flex flex-col absolute top-20 right-10 bg-gray-200 rounded-lg text-primary py-2 w-28 shadow-lg">
+        <div className="flex flex-col absolute top-20 right-10 bg-primary rounded-lg text-white py-2 w-28 shadow-lg">
           <Link
             onClick={() => setIsOpen(false)}
             to="/profile"
-            className="hover:bg-gray-300 p-2"
+            className="hover:bg-cyan-800/50 p-2"
           >
             View Profile
           </Link>
@@ -34,7 +34,7 @@ const ProfileIcon = (props) => {
               dispatch(update(null));
               navigate("/login", { replace: true });
             }}
-            className="hover:bg-gray-300 p-2 cursor-pointer"
+            className="hover:bg-cyan-800/50 p-2 cursor-pointer"
           >
             Sign Out
           </p>

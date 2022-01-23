@@ -36,7 +36,7 @@ const Projects = () => {
   console.log(projects);
   return (
     <section className="w-full lg:w-4/5">
-      <h1 className="text-5xl m-2 text-primary">Projects</h1>
+      <h1 className="text-5xl m-2 text-primary">My Projects</h1>
       {projects.length && projects !== "Unauthorized" ? (
         renderProjectCards()
       ) : (
