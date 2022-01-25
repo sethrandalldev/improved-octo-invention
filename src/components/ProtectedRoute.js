@@ -10,7 +10,7 @@ const ProtectedRoute = (props) => {
     <div className="flex h-screen">
       <ProfileIcon />
       <SideBar />
-      <div className="w-full bg-white">{props.children}</div>
+      <div className="w-full bg-white p-3">{props.children}</div>
     </div>
   ) : (
     <Navigate to="/login" replace={true} />

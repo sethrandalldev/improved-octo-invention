@@ -7,7 +7,7 @@ const ProjectCard = (props) => {
   return (
     <div
       onClick={() => navigate("/projects/world", { replace: true })}
-      className="rounded-lg shadow-md hover:shadow-lg hover:cursor-pointer flex flex-col mx-auto my-5 md:w-3/5 mx-4 "
+      className="rounded-lg shadow-md hover:shadow-lg hover:cursor-pointer flex flex-col mx-auto my-5 w-4/5 md:w-3/5 lg:w-1/2"
     >
       <div className="text-primary bg-gray-200 rounded-t-lg p-3 flex items-center justify-between">
         <div>

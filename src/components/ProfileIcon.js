@@ -24,7 +24,7 @@ const ProfileIcon = (props) => {
           <Link
             onClick={() => setIsOpen(false)}
             to="/profile"
-            className="hover:bg-cyan-800/50 p-2"
+            className="hover:bg-white/30 p-2"
           >
             View Profile
           </Link>
@@ -34,7 +34,7 @@ const ProfileIcon = (props) => {
               dispatch(update(null));
               navigate("/login", { replace: true });
             }}
-            className="hover:bg-cyan-800/50 p-2 cursor-pointer"
+            className="hover:bg-white/30 p-2 cursor-pointer"
           >
             Sign Out
           </p>

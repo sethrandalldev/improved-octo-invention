@@ -74,3 +74,11 @@ code {
   position: relative;
   z-index: 999;
 }
+
+.right-negative {
+  right: -20px;
+}
+
+.left-one {
+  left: 3px;
+}

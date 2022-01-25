@@ -2,9 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SideBarItem = ({ text, icon }) => {
   return (
-    <div className="hover:bg-white/30 hover:text-white hover:cursor-pointer flex items-center space-x-4 p-3 m-3 rounded-full md:rounded-lg">
-      {icon && <FontAwesomeIcon icon={icon} />}
-      <h3 className="hidden md:block">{text}</h3>
+    <div className="hover:bg-white/30 hover:text-white hover:cursor-pointer flex items-center space-x-6 p-3 my-2 rounded-lg">
+      <div className="w-6 flex items-center justify-evenly">
+        {icon && <FontAwesomeIcon icon={icon} size="lg" />}
+      </div>
+      <h3>{text}</h3>
     </div>
   );
 };
