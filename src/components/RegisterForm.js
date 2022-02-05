@@ -2,6 +2,8 @@ import Button from "./Button";
 import Textfield from "./Textfield";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { update } from "../slices/userSlice";
 
 const RegisterForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -9,6 +11,11 @@ const RegisterForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const saveAuthTokenInSession = (token) => {
+    window.localStorage.setItem("token", token);
+  };
 
   const onSubmit = () => {
     fetch("http://localhost:4000/register", {
@@ -17,9 +24,23 @@ const RegisterForm = () => {
       body: JSON.stringify({ firstName, lastName, email, password }),
     })
       .then((response) => response.json())
-      .then((user) => {
-        if (user.id) {
-          navigate("/projects", { replace: true });
+      .then((data) => {
+        if (data.userId && data.success === "true") {
+          saveAuthTokenInSession(data.token);
+          fetch(`http://localhost:4000/users/${data.userId}`, {
+            method: "get",
+            headers: {
+              "Content-Type": "applicaton/json",
+              Authorization: data.token,
+            },
+          })
+            .then((res) => res.json())
+            .then((user) => {
+              if (user && user.email) {
+                dispatch(update(user));
+                navigate("/projects", { replace: true });
+              }
+            });
         }
       });
   };

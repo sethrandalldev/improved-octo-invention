@@ -61,9 +61,6 @@ const SideBar = () => {
           <SideBarItem icon={faCog} text="Settings" />
         </div>
       </div>
-      <div className={`${isMinimized && "hidden"}`}>
-        <SideBarItem icon={faSignOutAlt} text="Sign Out" />
-      </div>
       <ToggleSideBar toggle={toggle} />
     </section>
   );
