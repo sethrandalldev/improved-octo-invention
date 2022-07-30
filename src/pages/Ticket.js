@@ -36,9 +36,6 @@ const Ticket = (props) => {
         </div>
         <div className="flex flex-col">
           <TicketComment />
-          <TicketComment />
-          <TicketComment />
-          <TicketComment />
         </div>
       </div>
     </div>

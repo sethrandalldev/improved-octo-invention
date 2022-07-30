@@ -9,7 +9,8 @@ export const projectsSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action) => {
-      state.projects = action.payload;
+      console.log(state);
+      state.projects = [...state.projects, action.payload];
     },
   },
 });

@@ -1,5 +1,5 @@
 const Loader = () => {
-  return <div class="loader mt-10 mx-auto"></div>;
+  return <div className="loader mt-10 mx-auto"></div>;
 };
 
 export default Loader;

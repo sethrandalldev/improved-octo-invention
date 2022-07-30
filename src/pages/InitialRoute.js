@@ -10,7 +10,7 @@ const InitialRoute = () => {
   useEffect(() => {
     const token = window.localStorage.getItem("token");
     if (token) {
-      fetch("http://localhost:4000/login", {
+      fetch("https://fictional-couscous.herokuapp.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -20,17 +20,19 @@ const InitialRoute = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data && data.userId) {
-            fetch(`http://localhost:4000/users/${data.userId}`, {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: token,
-              },
-            })
+            fetch(
+              `https://fictional-couscous.herokuapp.com/users/${data.userId}`,
+              {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: token,
+                },
+              }
+            )
               .then((res) => res.json())
               .then((user) => {
                 if (user && user.email) {
-                  console.log(user);
                   dispatch(update(user));
                   navigate("/projects", { replace: true });
                 } else {

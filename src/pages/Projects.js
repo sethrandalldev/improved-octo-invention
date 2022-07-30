@@ -1,47 +1,36 @@
+import { useState } from "react";
 import ProjectCard from "../components/ProjectCard";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { add } from "../slices/projectsSlice";
+import { useSelector } from "react-redux";
 import Loader from "../components/Loader";
-import { update } from "../slices/userSlice";
-import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
+import ProjectModal from "../components/ProjectModal";
 
 const Projects = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
   const projects = useSelector((state) => {
+    console.log(state);
     return state.projects.projects;
   });
 
-  useEffect(() => {
-    console.log("projects initialize");
-    fetch("http://localhost:4000/projects", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: window.localStorage.getItem("token"),
-      },
-    })
-      .then((response) => response.json())
-      .then((projects) => {
-        console.log("projects: ", projects);
-        dispatch(add(projects));
-      });
-  }, []);
-
   const renderProjectCards = () => {
-    return projects.map((project) => (
+    return projects?.map((project) => (
       <ProjectCard key={project.id} project={project} />
     ));
   };
-  console.log(projects);
+
   return (
-    <section className="w-full lg:w-4/5 lg:mx-auto">
-      <h1 className="text-5xl m-2 text-primary">My Projects</h1>
-      {projects.length && projects !== "Unauthorized" ? (
-        renderProjectCards()
-      ) : (
-        <Loader />
-      )}
+    <section className="w-full lg:w-4/5 lg:mx-auto m-5">
+      <h1 className="text-5xl text-primary">My Projects</h1>
+      <div className="w-32">
+        <Button
+          onClick={() => setShowModal(!showModal)}
+          title="New Project"
+          backgroundColor="bg-secondary"
+          color="text-white"
+        />
+      </div>
+      {Array.isArray(projects) ? renderProjectCards() : <Loader />}
+      {showModal && <ProjectModal />}
     </section>
   );
 };

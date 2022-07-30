@@ -7,6 +7,7 @@ import { update } from "../slices/userSlice";
 const Profile = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => {
+    console.log(state);
     return state.user.user;
   });
   const [firstName, setFirstName] = useState(user.firstName);
@@ -17,7 +18,6 @@ const Profile = () => {
     year: "number",
     day: "number",
   });
-  console.log(user);
   return (
     <div className="w-72 mx-auto my-20">
       <h3 className="py-5 text-3xl">{`${user.firstName} ${user.lastName}`}</h3>
@@ -42,8 +42,7 @@ const Profile = () => {
       />
       <Button
         onClick={() => {
-          console.log(user);
-          fetch(`http://localhost:4000/users/${user.id}`, {
+          fetch(`https://fictional-couscous.herokuapp.com/users/${user.id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

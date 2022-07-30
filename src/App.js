@@ -1,5 +1,4 @@
 import Login from "./pages/Login";
-import "./App.css";
 import Project from "./pages/Project";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -9,8 +8,10 @@ import Projects from "./pages/Projects.js";
 import Tickets from "./pages/Tickets";
 import Ticket from "./pages/Ticket";
 import InitialRoute from "./pages/InitialRoute";
+import { useState } from "react";
 
 function App() {
+  const [projects, setProjects] = useState([]);
   return (
     <Router>
       <Routes>
@@ -19,7 +20,7 @@ function App() {
           exact
           path="/profile"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute projects={projects} setProjects={setProjects}>
               <Profile />
             </ProtectedRoute>
           }
@@ -53,6 +54,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Ticket />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/users/:id/tickets"
+          element={
+            <ProtectedRoute>
+              <Tickets />
             </ProtectedRoute>
           }
         />

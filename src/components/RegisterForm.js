@@ -18,7 +18,7 @@ const RegisterForm = () => {
   };
 
   const onSubmit = () => {
-    fetch("http://localhost:4000/register", {
+    fetch("https://fictional-couscous.herokuapp.com/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ firstName, lastName, email, password }),
@@ -27,13 +27,16 @@ const RegisterForm = () => {
       .then((data) => {
         if (data.userId && data.success === "true") {
           saveAuthTokenInSession(data.token);
-          fetch(`http://localhost:4000/users/${data.userId}`, {
-            method: "get",
-            headers: {
-              "Content-Type": "applicaton/json",
-              Authorization: data.token,
-            },
-          })
+          fetch(
+            `https://fictional-couscous.herokuapp.com/users/${data.userId}`,
+            {
+              method: "get",
+              headers: {
+                "Content-Type": "applicaton/json",
+                Authorization: data.token,
+              },
+            }
+          )
             .then((res) => res.json())
             .then((user) => {
               if (user && user.email) {
