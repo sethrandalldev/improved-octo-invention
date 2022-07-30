@@ -1,8 +1,7 @@
-import { faCog } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 
 const ProjectCard = (props) => {
+  console.log(props.project);
   const navigate = useNavigate();
   return (
     <div
@@ -11,18 +10,9 @@ const ProjectCard = (props) => {
     >
       <div className="text-primary bg-gray-200 rounded-t-lg p-3 flex items-center justify-between">
         <div>
-          <h3 className="text-2xl">{props.project.name}</h3>
+          <h3 className="text-2xl">{props.project.title}</h3>
+          <h4 className="text-xl">{props.project.description}</h4>
         </div>
-        <div>
-          <FontAwesomeIcon
-            icon={faCog}
-            className="hover:drop-shadow-2xl hover:opacity-75 text-3xl ml-5 rounded-full"
-          />
-        </div>
-      </div>
-      <div className="bg-white flex p-3 justify-evenly rounded-b-lg">
-        <p>Role: {props.userRole}</p>
-        <p>Tickets: {props.userTickets}</p>
       </div>
     </div>
   );

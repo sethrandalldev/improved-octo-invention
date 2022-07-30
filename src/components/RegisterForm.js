@@ -3,7 +3,7 @@ import Textfield from "./Textfield";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { update } from "../slices/userSlice";
+import { updateUser } from "../slices/userSlice";
 
 const RegisterForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -40,7 +40,7 @@ const RegisterForm = () => {
             .then((res) => res.json())
             .then((user) => {
               if (user && user.email) {
-                dispatch(update(user));
+                dispatch(updateUser(user));
                 navigate("/projects", { replace: true });
               }
             });

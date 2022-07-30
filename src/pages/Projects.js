@@ -1,24 +1,26 @@
 import { useState } from "react";
 import ProjectCard from "../components/ProjectCard";
-import { useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Button from "../components/Button";
 import ProjectModal from "../components/ProjectModal";
+import { api } from "../api/api";
 
 const Projects = () => {
   const [showModal, setShowModal] = useState(false);
-  const projects = useSelector((state) => {
-    console.log(state);
-    return state.projects.projects;
-  });
+  const { data, error, isLoading } = api.endpoints.getProjects.useQuery();
 
   const renderProjectCards = () => {
-    return projects?.map((project) => (
+    console.log(data);
+    return data?.map((project) => (
       <ProjectCard key={project.id} project={project} />
     ));
   };
-
-  return (
+  console.log("projects");
+  return error ? (
+    <>Oh no, there was an error </>
+  ) : isLoading ? (
+    <>Loading...</>
+  ) : (
     <section className="w-full lg:w-4/5 lg:mx-auto m-5">
       <h1 className="text-5xl text-primary">My Projects</h1>
       <div className="w-32">
@@ -29,7 +31,7 @@ const Projects = () => {
           color="text-white"
         />
       </div>
-      {Array.isArray(projects) ? renderProjectCards() : <Loader />}
+      {data ? renderProjectCards() : <Loader />}
       {showModal && <ProjectModal />}
     </section>
   );

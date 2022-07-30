@@ -4,23 +4,26 @@ export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://fictional-couscous.herokuapp.com/",
+    prepareHeaders: (headers) => {
+      const token = window.localStorage.getItem("token");
+
+      // If we have a token set in state, let's assume that we should be passing it.
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+      }
+
+      return headers;
+    },
   }),
+  tagTypes: [],
   endpoints: (builder) => ({
     getProjects: builder.query({
-      query: () => "projects",
+      query: () => "projects", // Will make a request like https://pokeapi.co/api/v2/pokemon/bulbasaur
     }),
   }),
 });
 
-export const getProjects = () => {
-  fetch(`https://fictional-couscous.herokuapp.com/projects`, {
-    headers: {
-      Authorization: window.localStorage.getItem("token"),
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => data);
-};
+export const { useGetProjectsQuery } = api;
 
 export const getTicketsByProject = (projectId) => {
   fetch(

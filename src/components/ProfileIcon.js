@@ -4,7 +4,7 @@ import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import { update } from "../slices/userSlice";
+import { updateUser } from "../slices/userSlice";
 
 const ProfileIcon = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +31,8 @@ const ProfileIcon = (props) => {
           <p
             onClick={() => {
               window.localStorage.removeItem("token");
-              dispatch(update(null));
+              window.localStorage.removeItem("persist:root");
+              dispatch(updateUser(null));
               navigate("/login", { replace: true });
             }}
             className="hover:bg-white/30 p-2 cursor-pointer"

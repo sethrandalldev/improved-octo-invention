@@ -8,10 +8,8 @@ import Projects from "./pages/Projects.js";
 import Tickets from "./pages/Tickets";
 import Ticket from "./pages/Ticket";
 import InitialRoute from "./pages/InitialRoute";
-import { useState } from "react";
 
 function App() {
-  const [projects, setProjects] = useState([]);
   return (
     <Router>
       <Routes>
@@ -20,7 +18,7 @@ function App() {
           exact
           path="/profile"
           element={
-            <ProtectedRoute projects={projects} setProjects={setProjects}>
+            <ProtectedRoute>
               <Profile />
             </ProtectedRoute>
           }

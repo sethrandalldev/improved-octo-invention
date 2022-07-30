@@ -2,7 +2,7 @@ import Textfield from "../components/Textfield";
 import Button from "../components/Button";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { update } from "../slices/userSlice";
+import { updateUser } from "../slices/userSlice";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -53,7 +53,7 @@ const Profile = () => {
           })
             .then((response) => response.json())
             .then((updatedUser) => {
-              dispatch(update(updatedUser));
+              dispatch(updateUser(updatedUser));
             });
         }}
         title="Save"
