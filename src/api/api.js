@@ -3,7 +3,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://fictional-couscous.herokuapp.com/",
+    // baseUrl: "https://fictional-couscous.herokuapp.com/",
+    baseUrl: "http://localhost:4000/",
     prepareHeaders: (headers) => {
       const token = window.localStorage.getItem("token");
 
@@ -20,42 +21,28 @@ export const api = createApi({
     getProjects: builder.query({
       query: () => "projects", // Will make a request like https://pokeapi.co/api/v2/pokemon/bulbasaur
     }),
+    createProject: builder.mutation({
+      query: (project) => ({
+        url: "projects",
+        method: "POST",
+        body: project,
+      }),
+      transformResponse: (response) => response.data,
+    }),
+    getTicketsByProject: builder.query({
+      query: (projectId) => `projects/${projectId}/tickets`,
+    }),
+    getProjectUsersByProject: builder.query({
+      query: (projectId) => `projects/${projectId}/project-users`,
+    }),
   }),
 });
 
-export const { useGetProjectsQuery } = api;
-
-export const getTicketsByProject = (projectId) => {
-  fetch(
-    `https://fictional-couscous.herokuapp.com/projects/${projectId}/tickets`
-  )
-    .then((response) => response.json())
-    .then((data) => data);
-};
-
-export const getProjectUsersByProject = (projectId) => {
-  fetch(
-    `https://fictional-couscous.herokuapp.com/projects/${projectId}/project-users`
-  )
-    .then((response) => response.json())
-    .then((data) => data);
-};
-
-export const createProject = (title, description) => {
-  fetch("https://fictional-couscous.herokuapp.com/projects", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: window.localStorage.getItem("token"),
-    },
-    body: JSON.stringify({
-      title: title,
-      description: description,
-    }),
-  })
-    .then((response) => response.json())
-    .then((newProject) => newProject);
-};
+export const {
+  useGetProjectsQuery,
+  useGetTicketsByProjectQuery,
+  useCreateProjectMutation,
+} = api;
 
 export const updateUser = (user) => {
   fetch(`https://fictional-couscous.herokuapp.com/users/${user.id}`, {

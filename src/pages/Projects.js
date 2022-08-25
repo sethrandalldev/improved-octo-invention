@@ -3,11 +3,13 @@ import ProjectCard from "../components/ProjectCard";
 import Loader from "../components/Loader";
 import Button from "../components/Button";
 import ProjectModal from "../components/ProjectModal";
-import { api } from "../api/api";
+import { useGetProjectsQuery } from "../api/api";
 
 const Projects = () => {
   const [showModal, setShowModal] = useState(false);
-  const { data, error, isLoading } = api.endpoints.getProjects.useQuery();
+  const { data, error, isLoading } = useGetProjectsQuery();
+  console.log(data);
+  console.log(isLoading);
 
   const renderProjectCards = () => {
     console.log(data);
@@ -15,7 +17,7 @@ const Projects = () => {
       <ProjectCard key={project.id} project={project} />
     ));
   };
-  console.log("projects");
+
   return error ? (
     <>Oh no, there was an error </>
   ) : isLoading ? (

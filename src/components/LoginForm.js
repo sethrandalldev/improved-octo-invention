@@ -17,7 +17,8 @@ const LoginForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    fetch("https://fictional-couscous.herokuapp.com/login", {
+    // fetch("https://fictional-couscous.herokuapp.com/login", {
+    fetch("http://localhost:4000/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -27,12 +28,13 @@ const LoginForm = () => {
         if (data.userId && data.success === "true") {
           saveAuthTokenInSession(data.token);
           fetch(
-            `https://fictional-couscous.herokuapp.com/users/${data.userId}`,
+            // `https://fictional-couscous.herokuapp.com/users/${data.userId}`,
+            `http://localhost:4000/users/${data.userId}`,
             {
               method: "get",
               headers: {
                 "Content-Type": "applicaton/json",
-                Authorization: data.token,
+                Authorization: `Bearer ${data.token}`,
               },
             }
           )

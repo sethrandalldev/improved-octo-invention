@@ -1,18 +1,16 @@
 import Textfield from "../components/Textfield";
 import Button from "../components/Button";
-import { useDispatch } from "react-redux";
-import { add } from "../slices/projectsSlice";
-import { createProject } from "../api/api";
+import { useCreateProjectMutation } from "../api/api";
 
 const ProjectModal = () => {
-  const dispatch = useDispatch();
+  const [createProject, result] = useCreateProjectMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const title = e.target.elements[0].value;
     const description = e.target.elements[1].value;
 
-    const project = createProject(title, description);
+    const project = createProject({ title, description });
     console.log(project);
   };
   return (
