@@ -5,6 +5,7 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     // baseUrl: "https://fictional-couscous.herokuapp.com/",
     baseUrl: "http://localhost:4000/",
+    keepUnusedDataFor: 0,
     prepareHeaders: (headers) => {
       const token = window.localStorage.getItem("token");
 
@@ -18,8 +19,11 @@ export const api = createApi({
   }),
   tagTypes: [],
   endpoints: (builder) => ({
+    getProjectById: builder.query({
+      query: (projectId) => `projects/${projectId}`,
+    }),
     getProjects: builder.query({
-      query: () => "projects", // Will make a request like https://pokeapi.co/api/v2/pokemon/bulbasaur
+      query: () => "projects",
     }),
     createProject: builder.mutation({
       query: (project) => ({
@@ -39,6 +43,7 @@ export const api = createApi({
 });
 
 export const {
+  useGetProjectByIdQuery,
   useGetProjectsQuery,
   useGetTicketsByProjectQuery,
   useCreateProjectMutation,

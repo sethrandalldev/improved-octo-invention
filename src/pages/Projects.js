@@ -1,6 +1,5 @@
 import { useState } from "react";
 import ProjectCard from "../components/ProjectCard";
-import Loader from "../components/Loader";
 import Button from "../components/Button";
 import ProjectModal from "../components/ProjectModal";
 import { useGetProjectsQuery } from "../api/api";
@@ -8,8 +7,6 @@ import { useGetProjectsQuery } from "../api/api";
 const Projects = () => {
   const [showModal, setShowModal] = useState(false);
   const { data, error, isLoading } = useGetProjectsQuery();
-  console.log(data);
-  console.log(isLoading);
 
   const renderProjectCards = () => {
     console.log(data);
@@ -33,7 +30,7 @@ const Projects = () => {
           color="text-white"
         />
       </div>
-      {data ? renderProjectCards() : <Loader />}
+      {renderProjectCards()}
       {showModal && <ProjectModal />}
     </section>
   );

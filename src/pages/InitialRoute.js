@@ -1,16 +1,14 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { updateUser } from "../slices/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const InitialRoute = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = window.localStorage.getItem("token");
     if (token) {
-      fetch("https://fictional-couscous.herokuapp.com/login", {
+      fetch("http://localhost:4000/login", {
+        // fetch("https://fictional-couscous.herokuapp.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -21,7 +19,8 @@ const InitialRoute = () => {
         .then((data) => {
           if (data && data.userId) {
             fetch(
-              `https://fictional-couscous.herokuapp.com/users/${data.userId}`,
+              `http://localhost:4000/users/${data.userId}`,
+              // `https://fictional-couscous.herokuapp.com/users/${data.userId}`,
               {
                 method: "GET",
                 headers: {
@@ -33,7 +32,6 @@ const InitialRoute = () => {
               .then((res) => res.json())
               .then((user) => {
                 if (user && user.email) {
-                  dispatch(updateUser(user));
                   navigate("/projects", { replace: true });
                 } else {
                   navigate("/login", { replace: true });

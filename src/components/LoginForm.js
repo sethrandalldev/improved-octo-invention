@@ -2,14 +2,11 @@ import Button from "../components/Button";
 import Textfield from "../components/Textfield";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { updateUser } from "../slices/userSlice";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const saveAuthTokenInSession = (token) => {
     window.localStorage.setItem("token", token);
@@ -41,8 +38,6 @@ const LoginForm = () => {
             .then((res) => res.json())
             .then((user) => {
               if (user && user.email) {
-                console.log("user: ", user);
-                dispatch(updateUser(user));
                 navigate("/projects", { replace: true });
               }
             });

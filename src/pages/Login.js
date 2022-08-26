@@ -1,13 +1,11 @@
 import AppFeatureSection from "../components/AppFeatureSection";
 import LoginForm from "../components/LoginForm";
-import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 const Login = () => {
-  const user = useSelector((state) => state.user);
   const token = window.localStorage.getItem("token");
 
-  return user.email && token ? (
+  return token ? (
     <Navigate to="/projects" replace={true} />
   ) : (
     <div className="flex overflow-hidden">
