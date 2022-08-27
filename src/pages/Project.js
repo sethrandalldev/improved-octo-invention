@@ -4,6 +4,8 @@ import {
   useGetTicketsByProjectQuery,
   useGetProjectByIdQuery,
 } from "../api/api";
+import Button from "../components/Button";
+import TicketsTable from "../components/TicketsTable";
 
 const Project = () => {
   const params = useParams();
@@ -22,9 +24,17 @@ const Project = () => {
   ) : ticketError || projectError ? (
     <h1>An error has ocurred.</h1>
   ) : tickets && project ? (
-    <div>
-      <h1>{project.title}</h1>
+    <div className="w-full lg:w-4/5 lg:mx-auto m-5">
+      <h1 className="text-5xl text-primary">{project.title}</h1>
       <h1>{project.description}</h1>
+      <Button
+        title="Create Ticket"
+        color="text-white"
+        backgroundColor="bg-primary"
+        type="button"
+        fitContent
+      />
+      <TicketsTable />
     </div>
   ) : (
     <Loader />

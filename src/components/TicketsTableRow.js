@@ -5,7 +5,7 @@ const TicketsTableRow = () => {
 
   return (
     <tr
-      onClick={() => navigate("/tickets/hello", { replace: true })}
+      onClick={() => navigate("/tickets/hello")}
       className="hover:bg-gray-200 hover:cursor-pointer text-center"
     >
       <td className="p-2">Project Tracker</td>

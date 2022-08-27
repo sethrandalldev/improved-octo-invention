@@ -45,7 +45,7 @@ const InitialRoute = () => {
     } else {
       navigate("/login", { replace: true });
     }
-  }, []);
+  }, [navigate]);
   return <div></div>;
 };
 
