@@ -34,7 +34,7 @@ const Project = () => {
         type="button"
         fitContent
       />
-      <TicketsTable />
+      <TicketsTable data={tickets} />
     </div>
   ) : (
     <Loader />

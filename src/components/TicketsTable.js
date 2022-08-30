@@ -1,6 +1,7 @@
 import TicketsTableRow from "./TicketsTableRow";
 
-const TicketsTable = () => {
+const TicketsTable = (props) => {
+  console.log(props);
   return (
     <table className="my-10 mx-2 w-full">
       <thead className="bg-secondary">
@@ -12,7 +13,9 @@ const TicketsTable = () => {
         </tr>
       </thead>
       <tbody>
-        <TicketsTableRow />
+        {/* {data.map((ticket) => (
+          <TicketsTableRow ticket={ticket} />
+        ))} */}
       </tbody>
     </table>
   );
